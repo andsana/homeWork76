@@ -13,7 +13,7 @@ postsRouter.post('/', async (req, res) => {
     const post: PostWithoutId = {
         author: req.body.author,
         message: req.body.message,
-        datetime: req.body.datetime,
+        dateTime: (new Date()).toISOString(),
     }
 
     if (!post.author || !post.message) {

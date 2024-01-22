@@ -15,16 +15,11 @@ const fileDb = {
         }
     },
     async getItems() {
-        return data.map((post) => ({
-            ...post,
-            datetime: dayjs(post.datetime).format('DD.MM.YYYY HH:mm'),
-        }));
+        return data
     },
     async addItem(item: PostWithoutId) {
         const id = crypto.randomUUID();
-        const datetime = new Date().toISOString();
-
-        const post = {id, datetime, ...item};
+        const post = {id, ...item};
         data.push(post);
         await this.save();
 
@@ -36,6 +31,9 @@ const fileDb = {
 };
 
 export default fileDb;
+
+
+
 
 
 

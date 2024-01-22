@@ -10,4 +10,4 @@ export interface PostMutation {
   message: string;
 }
 
-export type PostWithoutId = Omit<Post, 'id'>;
+export type PostWithoutId = Omit<Post, 'id', 'datetime'>;

@@ -15,7 +15,10 @@ const fileDb = {
         }
     },
     async getItems() {
-        return data
+        return data.map((post) => ({
+            ...post,
+            datetime: dayjs(post.datetime).format('DD.MM.YYYY HH:mm'),
+        }));
     },
     async addItem(item: PostWithoutId) {
         const id = crypto.randomUUID();

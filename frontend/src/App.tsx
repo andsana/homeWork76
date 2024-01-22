@@ -1,10 +1,12 @@
 import {useEffect, useState} from 'react';
-import Toolbar from './components/Toolbar/Toolbar';
 import PostForm from './components/PostForm/PostForm';
 import Posts from './components/Posts/Posts';
 import {Post} from './types';
 import axiosApi from "./components/axiosApi.ts";
 import dayjs from 'dayjs';
+import {Container, Grid} from "@mui/material";
+import Toolbar from "./components/Toolbar/Toolbar.tsx";
+
 
 let datetime: string | null = null;
 
@@ -67,15 +69,17 @@ function App() {
         <header>
           <Toolbar />
         </header>
-        <main className="container-fluid">
-          <div className="mt-2 row">
-            <div className="col-4">
-              <PostForm onSubmit={createPost} />
-            </div>
-            <div className="col-4">
-              <Posts posts={posts} />
-            </div>
-          </div>
+        <main>
+          <Container className="mt-2">
+            <Grid container spacing={2}>
+              <Grid item xs={4}>
+                <PostForm onSubmit={createPost} />
+              </Grid>
+              <Grid item xs={4}>
+                <Posts posts={posts} />
+              </Grid>
+            </Grid>
+          </Container>
         </main>
       </>
   );

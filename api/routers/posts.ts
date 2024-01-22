@@ -4,7 +4,7 @@ import {PostWithoutId} from '../types';
 
 const postsRouter = Router();
 
-postsRouter.get('/', async (req, res) => {
+postsRouter.get('/', async (_req, res) => {
     const posts = await fileDb.getItems();
     res.send(posts);
 });

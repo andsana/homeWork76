@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
-import './PostItem.css';
 import {Post} from '../../types';
+import {Card, CardContent, Typography} from "@mui/material";
 
 interface Props {
   post: Post;
@@ -14,19 +14,25 @@ const PostItem: React.FC<Props> = ({post}) => {
   }, []);
 
   return (
-    <div>
-      <div className="card mb-2">
-        <div className="row no-gutters">
-          <div className="col-sm-8">
-            <div className="card-body">
-              <h5 className="card-title">{post.author}</h5>
-              <h6 className="card-text small">{post.message}</h6>
-              <p className="card-text small">{post.datetime}</p>
+      <Card className="mb-2">
+        <CardContent>
+          <div className="row no-gutters">
+            <div className="col-sm-8">
+              <div>
+                <Typography variant="h5" component="h2">
+                  {post.author}
+                </Typography>
+                <Typography variant="h6" color="textSecondary" className="small">
+                  {post.message}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" className="small">
+                  {post.datetime}
+                </Typography>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </CardContent>
+      </Card>
   );
 };
 

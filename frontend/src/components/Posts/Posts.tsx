@@ -10,7 +10,7 @@ interface Props {
 const Posts: React.FC<Props> = ({posts}) => {
     return (
         <>
-            <Typography variant="h6">Add new message</Typography>
+            <Typography variant="h6">Messages</Typography>
             {posts.map((post) => (
                 <PostItem
                     key={post.id}

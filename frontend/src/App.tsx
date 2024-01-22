@@ -1,12 +1,11 @@
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import PostForm from './components/PostForm/PostForm';
 import Posts from './components/Posts/Posts';
-import {Post} from './types';
+import { Post } from './types';
 import axiosApi from "./components/axiosApi.ts";
 import dayjs from 'dayjs';
-import {Container, Grid} from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import Toolbar from "./components/Toolbar/Toolbar.tsx";
-
 
 let datetime: string | null = null;
 
@@ -33,15 +32,17 @@ function App() {
           datetime: dayjs(post.datetime).format('DD.MM.YYYY HH:mm'),
         }));
 
+        setPosts(newPosts);
+
         if (newPosts.length > 0) {
           const lastPost = newPosts[newPosts.length - 1];
           datetime = lastPost.datetime;
-          setPosts((prevPosts) => [...prevPosts, ...newPosts]);
         }
       } catch (error) {
         console.error('Error fetching posts:', error);
       }
     };
+
     void fetchData();
     const intervalId = setInterval(fetchData, 3000);
 
@@ -86,3 +87,4 @@ function App() {
 }
 
 export default App;
+
